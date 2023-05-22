@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title> Student's Module</title>
+  <link href="" rel="stylesheet">
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar -dark bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Home Page</a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a aria-current="page" class="nav-link active" href="studenthome.html">Home</a>
+        </li>
+<!--          <li class="nav-item">-->
+<!--          <a class="nav-link" href="">Apply for units</a>-->
+<!--        </li>-->
+        <li class="nav-item">
+          <a class="nav-link active"  href="">My Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Log in</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+
+
+<div class="container">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<script crossorigin="anonymous" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable Form</title>
+</head>
+<body>
+    <h3>Edit Timetable</h3>
+    <hr/>
+    <form method="post" action="/contact-form">
+        {% if messages %}
+            {% for msg in messages %}
+            <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Monday</th>
+                <td><input type="text" name="monday" /></td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td><input type="time" name="Time" /></td>
+            </tr>
+            <tr>
+                <th>Tuesday</th>
+                <td><input type="text" name="tuesday" /></td>
+            </tr>
+             <tr>
+                <th>Time</th>
+                <td><input type="time" name="Time" /></td>
+            </tr>
+            <tr>
+                <th>Wednesday</th>
+                <td><input type="text" name="wednesday" /></td>
+            </tr>
+             <tr>
+                <th>Time</th>
+                <td><input type="time" name="Time" /></td>
+            </tr>
+             <tr>
+                <th>Thursday</th>
+                <td><input type="text" name="thursday" /></td>
+            </tr>
+             <tr>
+                <th>Time</th>
+                <td><input type="time" name="Time" /></td>
+            </tr>
+             <tr>
+                <th>Friday</th>
+                <td><input type="text" name="friday" /></td>
+            </tr>
+             <tr>
+                <th>Time</th>
+                <td><input type="time" name="Time" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

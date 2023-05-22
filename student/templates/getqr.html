@@ -1,0 +1,194 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Scan and Leave Attendance System</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/testimonials/QR.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: PhotoFolio - v1.1.1
+  * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="index2.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+<!--         Uncomment the line below if you also wish to use an image logo -->
+<!--         <img src="{% static 'img/testimonials/QR.png' %}" alt="">-->
+        <i class="bi bi-qr-code-scan"></i>
+        <h1>Scan and Leave</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index2.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="dropdown"><a href="#"><span>Users</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="http://127.0.0.1:8000/lecturer/index2.html">Lecturer</a></li>
+              <li><a href="http://127.0.0.1:8000/student/student-landing-page">Student</a></li>
+              <li><a href="http://127.0.0.1:8000/administrator/administrator">Administrator</a></li>
+              <li><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Developer</a></li>
+              <li><a href="gallery.html">AMS</a></li>
+<!--              <li><a href="gallery.html">Travel</a></li>-->
+<!--              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>-->
+<!--                <ul>-->
+<!--                  <li><a href="#">Sub Menu 1</a></li>-->
+<!--                  <li><a href="#">Sub Menu 2</a></li>-->
+<!--                  <li><a href="#">Sub Menu 3</a></li>-->
+<!--                </ul>-->
+<!--              </li>-->
+            </ul>
+          </li>
+          <li><a href="#">Services</a></li>
+        <!--          <li><a href="#">Contact</a></li>-->
+            {% if user.is_authenticated %}
+                <li> <a href="#">Welcome! {{user.username}}</a></li>
+                </ul>
+            <a class="nav-item nav-link" href="{% url 'logout-student/' %}">
+                Log out <i class="fas fa-sign-out-alt"></i>
+            </a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login-student/' %}">
+                Log in <i class="fas fa-sign-in-alt"></i>
+            </a>
+            <a class="nav-item nav-link" href="{% url 'register-student/' %}">
+                Sign up <i class="fas fa-user-plus"></i>
+            </a>
+            {% endif %}
+        </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+                    <h2><span>Captured Attendance Reports</span></h2>
+<!--                    <h3>QUICK LINKS</h3>-->
+            <p>Attendance Reports Appear here</p>
+<!--<div class="container">-->
+<!--    <form method="POST">-->
+<!--      <fieldset>-->
+<!--        <legend>Form</legend>-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.as_p }}-->
+<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--      </fieldset>-->
+<!--    </form>-->
+<!--</div>-->
+<!--          <br><br><br><br><br><br><br>-->
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+{% for ams in ams %}
+{% if user.first_name == ams.first_name  %}
+
+<table class="table">
+  <thead>
+    <tr><h1>
+      <th class="table-primary">Timestamp</th>
+      <th class="table-primary">Email Address</th>
+      <th class="table-primary">First Name</th>
+      <th class="table-primary">Second Name</th>
+      <th class="table-primary">Unit Name</th>
+      </h1>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="table-primary">{{ ams.timestamp }}</th>
+        <td class="table-primary">{{ ams.email_address }}</td>
+        <td class="table-primary">{{ ams.first_name }}</td>
+        <td class="table-primary">{{ ams.second_name}}</td>
+        <td class="table-primary">{{ ams.unit_name }}</td>
+    </tr>
+    <tr>
+
+  </tbody>
+</table>
+{% endif %}
+{% endfor %}
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+
+        &copy; Copyright <strong><span>NandiCorp</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
+        Designed by <a href="#">Nandi-Dean</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
+

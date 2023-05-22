@@ -1,0 +1,235 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Scan and Leave Attendance System</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static 'img/testimonials/QR.png' %}" rel="icon">
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: PhotoFolio - v1.1.1
+    * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+        <a href="http://127.0.0.1:8000/student/student-landing-page" class="logo d-flex align-items-center  me-auto me-lg-0">
+            <!--         Uncomment the line below if you also wish to use an image logo -->
+            <!--         <img src="{% static 'img/testimonials/QR.png' %}" alt="">-->
+            <i class="bi bi-qr-code-scan"></i>
+            <h1>Scan and Leave</h1>
+        </a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a href="http://127.0.0.1:8000/administrator/administrator" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li class="dropdown"><a href="#"><span>Users</span> <i
+                        class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+              <li><a href="http://127.0.0.1:8000/lecturer/index2.html">Lecturer</a></li>
+              <li><a href="http://127.0.0.1:8000/student/student-landing-page">Student</a></li>
+              <li><a href="http://127.0.0.1:8000/administrator/administrator">Administrator</a></li>
+              <li><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Developer</a></li>
+              <li><a href="gallery.html">AMS</a></li>
+                        <!--              <li><a href="gallery.html">Travel</a></li>-->
+                        <!--              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>-->
+                        <!--                <ul>-->
+                        <!--                  <li><a href="#">Sub Menu 1</a></li>-->
+                        <!--                  <li><a href="#">Sub Menu 2</a></li>-->
+                        <!--                  <li><a href="#">Sub Menu 3</a></li>-->
+                        <!--                </ul>-->
+                        <!--              </li>-->
+                    </ul>
+                </li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+
+            {% if user.is_authenticated %}
+                <li> <a href="#">Welcome! {{user.username}}</a></li>
+                </ul>
+            <a class="nav-item nav-link" href="{% url 'logout-student/' %}">
+                Log out <i class="fas fa-sign-out-alt"></i>
+            </a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login-student/' %}">
+                Log in <i class="fas fa-sign-in-alt"></i>
+            </a>
+            <a class="nav-item nav-link" href="{% url 'register-student/' %}">
+                Sign up <i class="fas fa-user-plus"></i>
+            </a>
+            {% endif %}
+        </nav><!-- .navbar -->
+
+        <div class="header-social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+</header><!-- End Header -->
+
+
+{% load crispy_forms_tags %}
+<section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade"
+         data-aos-delay="1500">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h2><span>Student {{ user.first_name }} {{ user.last_name }}!</span></h2>
+        <h2> <i class="bi bi-person-fill"></i>Student Dashboard </h2>
+        </div>
+    </div>
+</div>
+
+
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+<!--    WE TRY AND PUT A FOR LOOP SHOWING LECS AND UNITS-->
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+      <div class="container-fluid">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+              </svg>
+<!--              <br><br>-->
+                    <h5 class="card-title">Home</h5>
+
+                    <p class="card-text">Home-page</p>
+                   <div class="gallery-links d-flex align-items-center justify-content-center">
+                        <a href="https://images.pexels.com/photos/356065/pexels-photo-356065.jpeg?auto=compress&cs=tinysrgb&w=400" title="Home"
+                           class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                          <a href="http://127.0.0.1:8000/student/student-landing-page" class="details-link"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="gallery-item h-100">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-qr-code" viewBox="0 0 16 16">
+                        <path d="M2 2h2v2H2V2Z"/>
+                        <path d="M6 0v6H0V0h6ZM5 1H1v4h4V1ZM4 12H2v2h2v-2Z"/>
+                        <path d="M6 10v6H0v-6h6Zm-5 1v4h4v-4H1Zm11-9h2v2h-2V2Z"/>
+                        <path d="M10 0v6h6V0h-6Zm5 1v4h-4V1h4ZM8 1V0h1v2H8v2H7V1h1Zm0 5V4h1v2H8ZM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8H6Zm0 0v1H2V8H1v1H0V7h3v1h3Zm10 1h-1V7h1v2Zm-1 0h-1v2h2v-1h-1V9Zm-4 0h2v1h-1v1h-1V9Zm2 3v-1h-1v1h-1v1H9v1h3v-2h1Zm0 0h3v1h-2v1h-1v-2Zm-4-1v1h1v-2H7v1h2Z"/>
+                        <path d="M7 12h1v3h4v1H7v-4Zm9 2v2h-3v-1h2v-1h1Z"/>
+                      </svg>
+                    <h5 class="card-title">Get QR Attendance</h5>
+
+                    <p class="card-text">See your attendance information </p>
+                    <div class="gallery-links d-flex align-items-center justify-content-center">
+                        <a href="get-qr-code"
+                           title="Reports on scanned status"
+                           class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                        <a href="get-qr-code"
+                           class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div>
+            </div><!-- End Gallery Item -->
+
+            <div class="col-xl-3.5 col-lg-4 col-md-6">
+                <div class="gallery-item h-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor"
+                         class="bi bi-tags" viewBox="0 0 16 16">
+                        <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
+                        <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
+                    </svg>
+                    <h5 class="card-title">Registered Units</h5>
+
+                    <p class="card-text">All registered units</p>
+                    <div class="gallery-links d-flex align-items-center justify-content-center">
+                        <a href="https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                           title="Reports on scanned status"
+                           class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                        <a href="get-registration" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div>
+            </div><!-- End Gallery Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->
+
+  </main><!-- End #main -->
+
+</section>
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="copyright">
+
+            &copy; Copyright <strong><span>NandiCorp</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
+            Designed by <a href="#">Nandi-Dean</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader">
+    <div class="line"></div>
+</div>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+
+
+
+
+
